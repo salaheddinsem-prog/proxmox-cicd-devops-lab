@@ -1,1 +1,2 @@
-# proxmox-cicd-devops-lab
+Les technologies utilisées
+images/
