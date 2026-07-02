@@ -1,14 +1,21 @@
-Les technologies utilisées
-
-Virtualisation --> Proxmox VE
-OS --> Debian 12
-Web --> Apache2
-CI/CD --> GitHub Actions
-Runner --> GitHub Self Hosted Runner
-Monitoring --> Zabbix 7 LTS
-Configuration --> Ansible
-API --> Proxmox REST API
-Notifications --> Telegram Bot
-Versioning --> Git
-
-[table.csv](https://github.com/user-attachments/files/29615128/table.csv)
++-------------------------------------------------------+
+|                       GitHub                          |
++-------------------------------------------------------+
+                           | (Push)
++-------------------------------------------------------+
+|               GitHub Actions Workflow                 |
++-------------------------------------------------------+
+          /                                   \
++------------------+                +-------------------+
+| Snapshot Proxmox |                |  Déploiement Web  |
++------------------+                +-------------------+
+          \                                   /
+           \_________________________________/
+                            |
+           +---------------------------------+
+           |     CT 103 - Web Production     |
+           | - Debian 12 / Apache2           |
+           | - GitHub Runner / Zabbix Agent2 |
+           +---------------------------------+
+                            |
+                 [ Zabbix Sender ] ----> [ CT 104 - Zabbix Server ]
